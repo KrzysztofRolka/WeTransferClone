@@ -12,10 +12,16 @@
 	<h3>Upload file</h3>
 
 	<h:form enctype="multipart/form-data">
-		<h:inputFile value="#{fileController.file}">
-
+		<h:inputFile id="selectFile" title="Test"
+			value="#{fileController.file}">
+			<f:validator validatorId="fileUploadValidator" />
 		</h:inputFile>
 		<br />
+
+		<p>
+			<h:messages id="messages" />
+		</p>
+
 		<h:commandButton id="uploadBtn" value="Upload"
 			action="#{fileController.upload()}" />
 
