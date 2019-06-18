@@ -8,14 +8,18 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 import javax.servlet.http.Part;
 
+import pl.krolka.jsf.controller.AdminController;
+
 @FacesValidator(value = "fileUploadValidator")
 public class FileUploadValidator implements Validator<Object> {
 
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 
-		int properSizeInMB = 2;
-		String properExtention = "zip";
+		final AdminController adminController = new AdminController();
+		
+		int properSizeInMB = adminController.getMaxFileSizeInMB();
+		String properExtention = adminController.getExtentionName();
 
 		Part file = (Part) value;
 		FacesMessage message = null;

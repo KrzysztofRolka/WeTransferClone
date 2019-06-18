@@ -1,0 +1,28 @@
+3
+zip
+2
+"C:\\Users\\Admin\\eclipse-workspace\\WeTransferClone\\src\\main\\resources\\Files\\"
+ 
+
+
+
+
+
+
+
+	*****************************************
+	|                                       |
+	|           PROPERTIES FILE             |
+	|              NOT EDIT                 |
+	|                                       |
+	|     line 1 : Max file size in MB      |
+	|     line 2 : extension of file        |
+	|     line 3 : time to remove in min.   |
+	|     line 3 : path to file             |
+	|                                       |
+	|                                       |
+	|    WARNING!!! NOT USE WHITE SPACE     |
+	|                                       |
+	*****************************************
+	
+	
