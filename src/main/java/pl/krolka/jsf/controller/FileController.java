@@ -20,9 +20,11 @@ import javax.servlet.http.Part;
 public class FileController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Part file;	 	
-	private static String path = "C:\\Users\\Admin\\eclipse-workspace\\WeTransferClone\\src\\main\\resources\\Files\\";
+
+	private Part file;
 	private List<String> listOfFIles;
+	private String path = "C:\\Users\\Admin\\eclipse-workspace\\WeTransferClone\\src\\main\\resources\\Files\\";
+	AdminController adminController;
 
 	public List<String> getListOfFIles() {
 		return listOfFIles;
@@ -32,13 +34,13 @@ public class FileController implements Serializable {
 		this.listOfFIles = listOfFIles;
 	}
 
-	public static String getPath() {
-		return path;
+	public String getPath() {
+		adminController = new AdminController();
+		return path = adminController.getPathToFile();
 	}
 
-	public static void setPath(String path) {
-		FileController.path = path; 
-		
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 	public Part getFile() {
@@ -74,7 +76,6 @@ public class FileController implements Serializable {
 		return "success";
 	}
 
-	
 	private static String getFilename(Part part) {
 		for (String cd : part.getHeader("content-disposition").split(";")) {
 			if (cd.trim().startsWith("filename")) {
@@ -87,6 +88,8 @@ public class FileController implements Serializable {
 	}
 
 	public List<String> loadFilesToArray() {
+		
+		checkDirExist();
 
 		File folder = new File(path);
 
@@ -116,17 +119,26 @@ public class FileController implements Serializable {
 	}
 
 	public void refresh() throws IOException {
-		
+
+		path = adminController.getPathToFile();
+		checkDirExist();
 		listOfFIles = loadFilesToArray();
-		
+
 		// Refresh page
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
 	}
 
 	public String admin() {
-		
+
 		listOfFIles = loadFilesToArray();
 		return "admin_page";
+	}
+
+	public void checkDirExist() {
+		File tmpDir = new File(path);
+		if (!tmpDir.exists()) {
+			tmpDir.mkdirs();
+		}
 	}
 }

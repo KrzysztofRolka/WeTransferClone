@@ -104,8 +104,7 @@ public class AdminController implements Serializable {
 				bw.write(timeToRemoveInMin + "");
 				bw.newLine();
 				bw.write(pathToFile);
-				
-				
+
 				bw.newLine();
 				bw.newLine();
 				bw.newLine();
@@ -116,20 +115,20 @@ public class AdminController implements Serializable {
 				bw.newLine();
 				bw.newLine();
 
-				bw.write("	*****************************************\r\n" + 
-						"	|                                       |\r\n" + 
-						"	|           PROPERTIES FILE             |\r\n" + 
-						"	|              NOT EDIT                 |\r\n" + 
-						"	|                                       |\r\n" + 
-						"	|     line 1 : Max file size in MB      |\r\n" + 
-						"	|     line 2 : extension of file        |\r\n" + 
-						"	|     line 3 : time to remove in min.   |\r\n" + 
-						"	|     line 3 : path to file             |\r\n" + 
-						"	|                                       |\r\n" + 
-						"	|                                       |\r\n" + 
-						"	|    WARNING!!! NOT USE WHITE SPACE     |\r\n" + 
-						"	|                                       |\r\n" + 
-						"	*****************************************");
+				bw.write("	*****************************************\r\n"
+						+ "	|                                       |\r\n"
+						+ "	|           PROPERTIES FILE             |\r\n"
+						+ "	|              NOT EDIT                 |\r\n"
+						+ "	|                                       |\r\n"
+						+ "	|     line 1 : Max file size in MB      |\r\n"
+						+ "	|     line 2 : extension of file        |\r\n"
+						+ "	|     line 3 : time to remove in min.   |\r\n"
+						+ "	|     line 3 : path to file             |\r\n"
+						+ "	|                                       |\r\n"
+						+ "	|                                       |\r\n"
+						+ "	|    WARNING!!! NOT USE WHITE SPACE     |\r\n"
+						+ "	|                                       |\r\n"
+						+ "	*****************************************");
 				bw.close();
 			}
 		} catch (IOException e) {

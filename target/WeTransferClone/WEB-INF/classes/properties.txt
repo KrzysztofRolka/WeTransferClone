@@ -1,8 +1,8 @@
-3
-zip
 2
-"C:\\Users\\Admin\\eclipse-workspace\\WeTransferClone\\src\\main\\resources\\Files\\"
- 
+png
+45
+C:\\Users\\Admin\\eclipse-workspace\\WeTransferClone\\src\\main\\resources\\Files\\
+
 
 
 
@@ -24,5 +24,3 @@ zip
 	|    WARNING!!! NOT USE WHITE SPACE     |
 	|                                       |
 	*****************************************
-	
-	
