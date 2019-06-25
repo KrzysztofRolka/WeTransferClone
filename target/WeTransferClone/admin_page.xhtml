@@ -34,8 +34,7 @@
 		<br />
 		<h:inputText value="#{adminController.pathToFile}" />
 		<br />
-		<h:commandButton
-			action="#{adminController.writeDataToFile()}"
+		<h:commandButton action="#{adminController.writeDataToFile()}"
 			value="Save" />
 	</h:form>
 	<br />
@@ -44,12 +43,22 @@
 
 
 	<h3>List of files:</h3>
-	<h:dataTable binding="#{table}" value="#{fileController.listOfFIles}"
-		var="row">
-		<h:column>
-			<h:inputText value="#{fileController.listOfFIles[table.rowIndex]}" />
-		</h:column>
-	</h:dataTable>
+	<h:form>
+
+		<h:dataTable value="#{fileController.listOfFIles}" var="row">
+			<h:column>
+				<f:facet name="header">File Name:</f:facet>
+				<h:outputLabel value="#{row}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Delete File:</f:facet>
+				<h:commandLink id="TestID" value="Delete"
+					action="#{fileController.delete(row)}">
+				</h:commandLink>
+			</h:column>
+
+		</h:dataTable>
+	</h:form>
 	<br />
 	<br />
 
@@ -63,7 +72,6 @@
 	<h:form>
 		<h:commandLink action="upload_file" value="Back to the menu" />
 	</h:form>
-
 </body>
 
 </html>

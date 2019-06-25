@@ -22,7 +22,7 @@ public class AdminController implements Serializable {
 	private String extentionName;
 	private int timeToRemoveInMin;
 	private String pathToFile;
-
+	
 	public int getMaxFileSizeInMB() {
 		return maxFileSizeInMB = Integer.parseInt(readDateFromFile(1));
 	}

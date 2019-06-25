@@ -88,7 +88,7 @@ public class FileController implements Serializable {
 	}
 
 	public List<String> loadFilesToArray() {
-		
+
 		checkDirExist();
 
 		File folder = new File(path);
@@ -110,7 +110,7 @@ public class FileController implements Serializable {
 
 			if (f.isFile()) {
 				if (f.getName().matches(pattern)) {
-					result.add(f.getAbsolutePath());
+					result.add(f.getAbsolutePath().substring(f.getAbsolutePath().lastIndexOf("\\") + 1));
 				}
 			}
 
@@ -140,5 +140,16 @@ public class FileController implements Serializable {
 		if (!tmpDir.exists()) {
 			tmpDir.mkdirs();
 		}
+	}
+
+	public void delete(String fileName) throws IOException {
+
+		File fileToRemove = new File(path + fileName);
+		fileToRemove.delete();
+		
+		refresh();
+		
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAA " + fileName + " BBBBBBBBBBBB");
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAA " + fileToRemove.getAbsolutePath() + " BBBBBBBBBBBB");
 	}
 }

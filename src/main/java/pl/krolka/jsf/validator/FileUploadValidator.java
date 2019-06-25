@@ -8,7 +8,7 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 import javax.servlet.http.Part;
 
-import pl.krolka.jsf.controller.AdminController;
+import pl.krolka.jsf.controller.*;
 
 @FacesValidator(value = "fileUploadValidator")
 public class FileUploadValidator implements Validator<Object> {
@@ -16,7 +16,7 @@ public class FileUploadValidator implements Validator<Object> {
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 
-		final AdminController adminController = new AdminController();
+		AdminController adminController = new AdminController();
 		
 		int properSizeInMB = adminController.getMaxFileSizeInMB();
 		String properExtention = adminController.getExtentionName();
