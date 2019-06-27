@@ -52,7 +52,7 @@ public class FileController implements Serializable {
 	}
 
 	public FileController() {
-
+		
 	}
 
 	@PostConstruct
@@ -66,14 +66,19 @@ public class FileController implements Serializable {
 		// Example test.zip -> test_123233435.zip
 		String extention = getFilename(file).substring(getFilename(file).length() - 4);
 		Calendar calendar = Calendar.getInstance();
-		String fileName = getFilename(file).substring(0, getFilename(file).length() - 4) + "_"
-				+ calendar.getTimeInMillis() + extention;
+		// String fileName = getFilename(file).substring(0, getFilename(file).length() -
+		// 4) + "_"
+		// + calendar.getTimeInMillis() + extention;
+		String fileName = calendar.getTimeInMillis() + "_"
+				+ getFilename(file).substring(0, getFilename(file).length() - 4) + extention;
 
 		file.write(path + fileName);
 
 		listOfFIles = loadFilesToArray();
 
 		return "success";
+		
+		
 	}
 
 	private static String getFilename(Part part) {
@@ -146,10 +151,27 @@ public class FileController implements Serializable {
 
 		File fileToRemove = new File(path + fileName);
 		fileToRemove.delete();
-		
+
 		refresh();
-		
-		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAA " + fileName + " BBBBBBBBBBBB");
-		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAA " + fileToRemove.getAbsolutePath() + " BBBBBBBBBBBB");
+	}
+
+	public void deleteAfterTime() throws IOException {
+
+		System.out.println("Delete After Time");
+
+		if (!listOfFIles.isEmpty()) {
+
+			Calendar calendar = Calendar.getInstance();
+
+			for (String file : listOfFIles) {
+				long fileTime = Long.parseLong((file.substring(0, 13)));
+				long currentTime = calendar.getTimeInMillis();
+
+				if ((currentTime - fileTime) > (adminController.getTimeToRemoveInMin() * 60000)) {
+					delete(file);
+
+				}
+			}
+		}
 	}
 }

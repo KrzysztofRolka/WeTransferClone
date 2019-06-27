@@ -1,6 +1,6 @@
 2
 png
-45
+1
 C:\\Users\\Admin\\eclipse-workspace\\WeTransferClone\\src\\main\\resources\\Files\\
 
 
