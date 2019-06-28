@@ -52,7 +52,7 @@ public class FileController implements Serializable {
 	}
 
 	public FileController() {
-		
+
 	}
 
 	@PostConstruct
@@ -63,12 +63,9 @@ public class FileController implements Serializable {
 	public String upload() throws IOException {
 
 		// Add TimeInMilis to file name.
-		// Example test.zip -> test_123233435.zip
+		// Example test.zip -> 123233435_test.zip
 		String extention = getFilename(file).substring(getFilename(file).length() - 4);
 		Calendar calendar = Calendar.getInstance();
-		// String fileName = getFilename(file).substring(0, getFilename(file).length() -
-		// 4) + "_"
-		// + calendar.getTimeInMillis() + extention;
 		String fileName = calendar.getTimeInMillis() + "_"
 				+ getFilename(file).substring(0, getFilename(file).length() - 4) + extention;
 
@@ -76,9 +73,8 @@ public class FileController implements Serializable {
 
 		listOfFIles = loadFilesToArray();
 
-		return "success";
-		
-		
+		return "faces/success";
+
 	}
 
 	private static String getFilename(Part part) {
@@ -134,10 +130,13 @@ public class FileController implements Serializable {
 		ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
 	}
 
-	public String admin() {
+	public void admin() throws IOException {
 
 		listOfFIles = loadFilesToArray();
-		return "admin_page";
+
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		externalContext.redirect("sec/admin_page.xhtml");
+
 	}
 
 	public void checkDirExist() {

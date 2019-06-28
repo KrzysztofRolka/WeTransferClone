@@ -1,3 +1,5 @@
 pl\krolka\jsf\controller\FileController.class
+pl\krolka\jsf\validator\MyFilter.class
 pl\krolka\jsf\validator\FileUploadValidator.class
+pl\krolka\jsf\controller\Login.class
 pl\krolka\jsf\controller\AdminController.class

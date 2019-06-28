@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<head>
+<title>Login Page</title>
+</head>
+
+<body>
+
+	<h:form id="myform">
+
+		<h:messages globalOnly="true" style="color:red;margin:8px;" />
+
+		<h:outputText value="Username: " />
+		<h:inputText label="Username" value="#{login.username}" />
+		<br />
+		<br />
+		<h:outputText value="Password: " />
+		<h:inputSecret value="#{login.password}" />
+		<br />
+		<br />
+		<h:commandButton value="login" action="#{login.login}" />
+	</h:form>
+
+	<h:form>
+		<h:commandLink action="/upload_file" value="Back to the menu" />
+	</h:form>
+
+</body>
+
+</html>
