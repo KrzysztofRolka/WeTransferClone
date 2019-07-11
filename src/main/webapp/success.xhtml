@@ -2,19 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
 
-<head>
+<h:head>
 <title>Upload File</title>
-</head>
+</h:head>
 
-<body>
-	<h3>File Upload Success</h3>
-	<h:form>
-	<h:commandLink action="upload_file" value="Back to the menu" />
-	
-	</h:form>
+<h:body>
+	<b:panel>
+		<h3>File Upload Success</h3>
+		<h:form>
+			<h:commandLink action="upload_file" value="Back to the menu" />
+		</h:form>
+	</b:panel>
 
-</body>
+</h:body>
 
 </html>

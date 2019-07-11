@@ -2,85 +2,118 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
 
-<head>
-<title>Admin Page</title>
-</head>
+<h:head>
+	<title>Admin Page</title>
+</h:head>
 
-<body>
-	<h1>Admin Page</h1>
+<h:body>
 
+	<b:navBar brand="WeTransferClone"
+		brandHref="/WeTransferClone/faces/upload_file.xhtml" fixed="top"
+		inverse="true">
 
-	<h:panelGroup rendered="#{not empty user}">
-		<p>Welcome, #{user}</p>
-		<h:form>
-			<h:commandButton value="logout" action="#{login.logout}" />
-		</h:form>
-	</h:panelGroup>
-
-	<h:form>
-		<h3>Properties:</h3>
-		<h:outputLabel value="Max File Size in MB:" />
-		<br />
-		<h:inputText value="#{adminController.maxFileSizeInMB}" />
-		<br />
-		<br />
-		<h:outputLabel value="File extention:" />
-		<br />
-		<h:inputText value="#{adminController.extentionName}" />
-		<br />
-		<br />
-		<h:outputLabel value="Time to remove in min:" />
-		<br />
-		<h:inputText value="#{adminController.timeToRemoveInMin}" />
-		<br />
-		<br />
-		<h:outputLabel value="Files path:" />
-		<br />
-		<h:inputText value="#{adminController.pathToFile}" />
-		<br />
-		<h:commandButton action="#{adminController.writeDataToFile()}"
-			value="Save" />
-	</h:form>
-
+		<h:panelGrid columns="3" rendered="#{not empty user}"
+			styleClass="navbar-form navbar-right">
+			<p style="color: white">Welcome, #{user}</p>
+			<h:form>
+				<b:commandButton value="Sing Out" action="#{login.logout}"
+					look="primary" icon="chevron-left" iconAlign="right" />
+			</h:form>
+		</h:panelGrid>
+	</b:navBar>
 	<br />
-
-	<h3>List of files:</h3>
-	<h:form>
-
-		<h:dataTable value="#{fileController.listOfFIles}" var="row">
-			<h:column>
-				<f:facet name="header">File Name:</f:facet>
-				<h:outputLabel value="#{row}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">Delete File:</f:facet>
-				<h:commandLink id="TestID" value="Delete"
-					action="#{fileController.delete(row)}">
-				</h:commandLink>
-			</h:column>
-
-		</h:dataTable>
-	</h:form>
+	<br />
 	<br />
 	<br />
 
+	<b:container>
+		<b:row>
+			<b:column medium-screen="8">
+				<b:jumbotron>
 
-	<h:form>
-		<h:commandButton action="#{fileController.refresh()}" value="Refresh" />
-	</h:form>
+					<h:form>
+						<h3>Properties:</h3>
+						<b:label value="Max File Size in MB:" />
+						<br />
+						<b:inputText value="#{adminController.maxFileSizeInMB}" />
+						<br />
+						<br />
+						<b:label value="File extention:" />
+						<br />
+						<b:inputText value="#{adminController.extentionName}" />
+						<br />
+						<br />
+						<b:label value="Time to remove in min:" />
+						<br />
+						<b:inputText value="#{adminController.timeToRemoveInMin}" />
+						<br />
+						<br />
+						<b:label value="Files path:" />
+						<br />
+						<b:inputText value="#{adminController.pathToFile}" />
+						<br />
+						<b:commandButton action="#{adminController.writeDataToFile()}"
+							value="Save" />
+					</h:form>
 
-	<br />
-	<h:form>
-		<h:commandButton action="#{fileController.deleteAfterTime()}"
-			value="Delete After Time" />
-	</h:form>
-	<br />
+				</b:jumbotron>
+			</b:column>
+		</b:row>
+	</b:container>
 
-	<h:form>
-		<h:commandLink action="/upload_file" value="Back to the menu" />
-	</h:form>
-</body>
+	<b:container>
+		<b:row>
+			<b:column medium-screen="8">
+				<b:jumbotron>
+
+					<h3>List of files:</h3>
+
+					<h:form>
+						<b:dataTable value="#{fileController.listOfFIles}" var="row"
+							onpage="console.log('page');">
+							<b:dataTableColumn value="#{row}"
+								label="File Name:" />
+							<b:dataTableColumn label="Delete">
+								<b:commandLink icon="trash"
+									action="#{fileController.delete(row)}" />
+							</b:dataTableColumn>
+						</b:dataTable>
+					</h:form>
+				</b:jumbotron>
+			</b:column>
+		</b:row>
+	</b:container>
+
+	<b:container>
+		<b:row>
+			<b:column medium-screen="8">
+				<b:jumbotron>
+
+					<h3>Options:</h3>
+					<h:form>
+						<b:commandButton action="#{fileController.deleteAfterTime()}"
+							value="Delete After Time" />
+					</h:form>
+					<br/>
+
+					<h:form>
+						<b:commandButton action="#{fileController.refresh()}"
+							value="Refresh" />
+					</h:form>
+					<br/>
+					
+					<h:form>
+						<h:commandLink action="/upload_file" value="Back to the menu" />
+					</h:form>
+
+				</b:jumbotron>
+			</b:column>
+		</b:row>
+	</b:container>
+
+</h:body>
 
 </html>

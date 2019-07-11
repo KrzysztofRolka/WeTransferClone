@@ -2,33 +2,55 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
 
-<head>
-<title>Login Page</title>
-</head>
+<h:head>
 
-<body>
+	<title>Sign In </title>
+	<style type="text/css">
+	
+.form-signin {
+	margin: 0 auto;
+	max-width: 330px;
+	padding: 15px;
+}
+</style>
+</h:head>
 
-	<h:form id="myform">
+<h:body>
 
-		<h:messages globalOnly="true" style="color:red;margin:8px;" />
+	<b:navBar brand="WeTransferClone" brandHref="/WeTransferClone/faces/upload_file.xhtml" fixed="top" inverse="true">
+	</b:navBar>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
-		<h:outputText value="Username: " />
-		<h:inputText label="Username" value="#{login.username}" />
-		<br />
-		<br />
-		<h:outputText value="Password: " />
-		<h:inputSecret value="#{login.password}" />
-		<br />
-		<br />
-		<h:commandButton value="login" action="#{login.login}" />
-	</h:form>
+	<b:container>
+		<b:jumbotron>
+			<h:form styleClass="form-signin" prependId="false">
+				<b:messages/>
+				<h2 class="form-signin-heading">Please sign in</h2>
+				<b:inputText id="email" placeholder="Email address"
+					value="#{login.username}">
+					<f:facet name="prepend">
+						<b:icon name="user" />
+					</f:facet>
+				</b:inputText>
+				<b:inputText id="password" placeholder="Password" type="password"
+					value="#{login.password}">
+					<f:facet name="prepend">
+						<b:iconAwesome name="key" />
+					</f:facet>
+				</b:inputText>
+				<b:commandButton look="primary btn-block" value="Sign In"
+					icon="log-in" size="sm" action="#{login.login}" />
+			</h:form>
+		</b:jumbotron>
+	</b:container>
 
-	<h:form>
-		<h:commandLink action="/upload_file" value="Back to the menu" />
-	</h:form>
-
-</body>
+</h:body>
 
 </html>

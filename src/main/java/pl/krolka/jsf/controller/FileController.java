@@ -121,13 +121,16 @@ public class FileController implements Serializable {
 
 	public void refresh() throws IOException {
 
-		path = adminController.getPathToFile();
+		AdminController adControll = new AdminController();
+
+		path = adControll.getPathToFile();
 		checkDirExist();
 		listOfFIles = loadFilesToArray();
 
-		// Refresh page
+		//Refresh page
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
+
 	}
 
 	public void admin() throws IOException {
@@ -155,8 +158,9 @@ public class FileController implements Serializable {
 	}
 
 	public void deleteAfterTime() throws IOException {
-
 		System.out.println("Delete After Time");
+
+		AdminController adControll = new AdminController();
 
 		if (!listOfFIles.isEmpty()) {
 
@@ -166,9 +170,8 @@ public class FileController implements Serializable {
 				long fileTime = Long.parseLong((file.substring(0, 13)));
 				long currentTime = calendar.getTimeInMillis();
 
-				if ((currentTime - fileTime) > (adminController.getTimeToRemoveInMin() * 60000)) {
+				if ((currentTime - fileTime) > (adControll.getTimeToRemoveInMin() * 60000)) {
 					delete(file);
-
 				}
 			}
 		}

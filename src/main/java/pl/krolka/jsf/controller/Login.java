@@ -37,7 +37,7 @@ public class Login implements Serializable {
 	        
 	        FacesContext context = FacesContext.getCurrentInstance();
 
-	        if(this.username.equals("admin") && this.password.equals("admin")){
+	        if(this.username.equals("admin") && this.password.equals("1")){
 	            context.getExternalContext().getSessionMap().put("user", username);
 	            try {
 					context.getExternalContext().redirect("sec/admin_page.xhtml");

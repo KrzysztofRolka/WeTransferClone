@@ -2,41 +2,77 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
 
-<head>
-<title>Upload File</title>
-</head>
+<h:head>
+	<title>Upload File</title>
 
-<body>
-	<h3>Upload file</h3>
+	<style type="text/css">
+.btn {
+	display: inline-block;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border: 1px solid transparent;
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	border-radius: .25rem;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out,
+		border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	color: #fff;
+	background-color: #6c757d;
+	border-color: #6c757d;
+}
+</style>
+</h:head>
 
-	<h:form enctype="multipart/form-data">
-		<h:inputFile id="selectFile" title="Test"
-			value="#{fileController.file}">
-			<f:validator validatorId="fileUploadValidator" />
-		</h:inputFile>
-		<br />
+<h:body>
 
-		<p>
-			<h:messages id="messages" />
-		</p>
+	<b:navBar brand="WeTransferClone" brandHref="/WeTransferClone/faces/upload_file.xhtml"
+		fixed="top" inverse="true">
 
-		<h:commandButton id="uploadBtn" value="Upload"
-			action="#{fileController.upload()}" />
-
-	</h:form>
-
-
+		<h:form styleClass="navbar-form navbar-right">
+			<b:commandButton action="#{fileController.admin()}" value="Sign in"
+				look="primary" icon="chevron-right" iconAlign="right" />
+		</h:form>
+	</b:navBar>
 	<br />
-	<h:form>
-		<h:commandLink action="#{fileController.admin()}" value="Admin Page" />
-	</h:form>
-	
 	<br />
-	
-	<h4>#{fileController.path}</h4>
-	
-</body>
+	<br />
+	<br />
+
+	<b:container>
+		<b:jumbotron>
+
+			<h2>Upload file</h2>
+			<br />
+			<br />
+			<h:form enctype="multipart/form-data">
+				<h:inputFile id="selectFile" title="Test"
+					value="#{fileController.file}" styleClass="btn">
+					<f:validator validatorId="fileUploadValidator" />
+				</h:inputFile>
+				<br />
+
+				<p>
+					<h:messages id="messages" style="color:red;" />
+				</p>
+
+				<h:commandButton id="uploadBtn" value="Upload"
+					action="#{fileController.upload()}" styleClass="btn" />
+
+			</h:form>
+
+		</b:jumbotron>
+	</b:container>
+
+</h:body>
 
 </html>
